@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["Matrixd"]
+  "cSpell.words": ["Matrixd"],
+  "files.associations": {
+    "object": "cpp"
+  }
 }
