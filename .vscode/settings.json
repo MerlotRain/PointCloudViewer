@@ -1,6 +1,7 @@
 {
-  "cSpell.words": ["Matrixd"],
+  "cSpell.words": ["DATAITEM", "Matrixd", "POINTCLOUD", "spdlog", "XYZI"],
   "files.associations": {
-    "object": "cpp"
+    "object": "cpp",
+    "stdvector": "cpp"
   }
 }

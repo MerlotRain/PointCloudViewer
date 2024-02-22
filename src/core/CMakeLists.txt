@@ -1,10 +1,15 @@
 set(CORE_HEADERS 
-    pcv_object.h)
+    data/pcv_dataitem.h
+    data/pcv_pointcloud.h
+    pcv_object.h
+    pcv_configure.h)
 
 set(CORE_SOURCES 
-    pcv_object.cpp)
+    data/pcv_dataitem.cpp
+    data/pcv_pointcloud.cpp
+    pcv_object.cpp
+    pcv_configure.cpp)
 
-find_package(Qt6 COMPONENTS Core Widgets Gui Xml REQUIRED)
 
 add_library(pcv_core SHARED ${CORE_SOURCES} ${CORE_HEADERS})
 

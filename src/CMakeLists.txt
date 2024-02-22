@@ -3,3 +3,4 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
 add_subdirectory(core)
+add_subdirectory(app)
