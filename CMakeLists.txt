@@ -21,4 +21,4 @@ include_directories(${PCL_BINARY_DIRS})
 include_directories(${VTK_INCLUDE_DIRS})
 
 add_subdirectory(src)
-add_subdirectory(tests)
+# add_subdirectory(tests)

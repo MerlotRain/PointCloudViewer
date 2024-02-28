@@ -1,7 +1,6 @@
 #ifndef __PCV_H__
 #define __PCV_H__
 
-#include "data/pcv_pointcloud.h"
 #include <spdlog/spdlog.h>
 
 namespace pcv {
