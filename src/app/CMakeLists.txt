@@ -1,12 +1,11 @@
 set(app_sources 
     pcv_app.cpp 
-    pcv_appprivate.cpp
-    pcv_mainwindow.cpp)
+    pcv_appprivate.cpp)
 
 set(app_headers 
     pcv_app.h
     pcv_appprivate.h
-    pcv_mainwindow.h)
+    pcv_mainwindowbase.h)
     
 add_library(pcv_app SHARED ${app_sources} ${app_headers})
 
@@ -24,10 +23,4 @@ target_include_directories(pcv_app PUBLIC
 target_link_libraries(pcv_app 
     pcv_core
     spdlog::spdlog
-    ${PCL_LIBRARIES})
-
-add_executable(PCV main.cpp)
-
-target_link_libraries(PCV 
-    pcv_app)
-    
+)

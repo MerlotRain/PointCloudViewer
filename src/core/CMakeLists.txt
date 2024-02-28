@@ -1,11 +1,20 @@
 set(CORE_HEADERS 
-    data/pcv_dataitem.h
+    data/pcv_metadata.h
     data/pcv_pointcloud.h
+
+    dataitem/pcv_dataitem.h
+    dataitem/pcv_folderitem.h
+    dataitem/pcv_pointclouditem.h
+
     pcv_configure.h)
 
 set(CORE_SOURCES 
-    data/pcv_dataitem.cpp
     data/pcv_pointcloud.cpp
+
+    dataitem/pcv_dataitem.cpp
+    dataitem/pcv_folderitem.cpp
+    dataitem/pcv_pointclouditem.cpp
+
     pcv_configure.cpp)
 
 
@@ -20,6 +29,8 @@ GENERATE_EXPORT_HEADER(
 target_include_directories(pcv_core PUBLIC 
     ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}
+    data
+    dataitem
     )
 
 target_link_libraries(pcv_core Qt6::Core Qt6::Widgets Qt6::Gui Qt6::Xml)

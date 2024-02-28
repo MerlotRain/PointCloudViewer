@@ -1,6 +1,7 @@
 #ifndef __PCV_APPPRIVATE_H__
 #define __PCV_APPPRIVATE_H__
 
+#include <QMainWindow>
 #include <QObject>
 #include <pcv_app_global.h>
 

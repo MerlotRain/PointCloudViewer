@@ -2,13 +2,20 @@
   "cSpell.words": [
     "APPPRIVATE",
     "DATAITEM",
+    "FOLDERITEM",
+    "MAINWINDOW",
+    "MAINWINDOWBASE",
     "Matrixd",
     "POINTCLOUD",
+    "POINTCLOUDITEM",
     "spdlog",
     "XYZI"
   ],
   "files.associations": {
     "object": "cpp",
-    "stdvector": "cpp"
+    "stdvector": "cpp",
+    "graphicscontext": "cpp",
+    "operationthread": "cpp",
+    "stats": "cpp"
   }
 }
