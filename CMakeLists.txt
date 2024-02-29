@@ -12,8 +12,22 @@ find_package(Boost REQUIRED COMPONENTS program_options)
 find_package(VTK REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(PCL REQUIRED)
-find_package(Qt6 COMPONENTS Core Widgets Gui Xml REQUIRED)
 find_package(spdlog REQUIRED)
+
+######################################################################
+# Qt
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS 
+    Core 
+    Gui 
+    Widgets 
+    Xml 
+    OpenGL 
+    REQUIRED
+)
+
+message("QT_VERSION_MAJOR=${QT_VERSION_MAJOR}")
+
 
 include_directories(${EIGEN3_INCLUDE_DIRS})
 include_directories(${PCL_INCLUDE_DIRS})

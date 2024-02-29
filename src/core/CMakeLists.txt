@@ -33,4 +33,7 @@ target_include_directories(pcv_core PUBLIC
     dataitem
     )
 
-target_link_libraries(pcv_core Qt6::Core Qt6::Widgets Qt6::Gui Qt6::Xml)
+target_link_libraries(pcv_core 
+    Qt${QT_VERSION_MAJOR}::Core
+    Qt${QT_VERSION_MAJOR}::Xml
+    spdlog::spdlog)
