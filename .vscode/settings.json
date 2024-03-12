@@ -20,6 +20,7 @@
     "graphicscontext": "cpp",
     "operationthread": "cpp",
     "stats": "cpp",
-    "qwidget": "cpp"
+    "qwidget": "cpp",
+    "qicon": "cpp"
   }
 }

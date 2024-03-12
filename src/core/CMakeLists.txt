@@ -8,7 +8,8 @@ set(CORE_HEADERS
 
     pcv.h
     pcv_matrix.h
-    pcv_configure.h)
+    pcv_configure.h
+    pcv_animatedicon.h)
 
 set(CORE_SOURCES 
     data/pcv_pointcloud.cpp
@@ -18,7 +19,8 @@ set(CORE_SOURCES
     dataitem/pcv_pointclouditem.cpp
 
     pcv_matrix.cpp
-    pcv_configure.cpp)
+    pcv_configure.cpp
+    pcv_animatedicon.cpp)
 
 
 add_library(pcv_core SHARED ${CORE_SOURCES} ${CORE_HEADERS})
@@ -38,5 +40,6 @@ target_include_directories(pcv_core PUBLIC
 
 target_link_libraries(pcv_core 
     Qt${QT_VERSION_MAJOR}::Core
+    Qt${QT_VERSION_MAJOR}::Gui
     Qt${QT_VERSION_MAJOR}::Xml
     spdlog::spdlog)
