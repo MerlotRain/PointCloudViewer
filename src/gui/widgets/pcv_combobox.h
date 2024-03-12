@@ -9,14 +9,14 @@ class ComboBoxPrivate;
 class ComboBox : public QWidget
 {
     Q_OBJECT
-    Q_DECLARE_PRIVATE(ComboBox)
-
 public:
-    ComboBox(QWidget *parent = nullptr);
+    explicit ComboBox(QWidget *parent = nullptr);
+    explicit ComboBox(const QStringList &items, QWidget *parent = nullptr);
     ~ComboBox();
 
 private:
-    ComboBoxPrivate *const d_ptr;
+    Q_DISABLE_COPY(ComboBox)
+    Q_DECLARE_PRIVATE(ComboBox)
 };
 
 }// namespace pcv

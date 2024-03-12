@@ -1,10 +1,18 @@
 set(gui_sources 
-    widgets/pcv_combobox.cpp)
+    widgets/pcv_combobox.cpp
+    widgets/pcv_lineedit.cpp
+)
 
 set(gui_headers
-    widgets/pcv_combobox.h)
+    widgets/pcv_combobox.h
+    widgets/pcv_lineedit.h
+)
 
-add_library(pcv_gui SHARED ${gui_sources} ${gui_headers})
+set(gui_private
+    widgets/pcv_combobox_p.h
+)
+
+add_library(pcv_gui SHARED ${gui_sources} ${gui_headers} ${gui_private})
 
 GENERATE_EXPORT_HEADER(
     pcv_gui
@@ -23,4 +31,8 @@ target_link_libraries(pcv_gui
 target_link_libraries(pcv_gui 
     Qt${QT_VERSION_MAJOR}::Gui
     Qt${QT_VERSION_MAJOR}::Widgets
+)
+
+target_include_directories(pcv_gui PRIVATE 
+    ${Qt6Widgets_PRIVATE_INCLUDE_DIRS}
 )

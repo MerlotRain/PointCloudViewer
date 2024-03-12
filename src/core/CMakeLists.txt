@@ -6,6 +6,8 @@ set(CORE_HEADERS
     dataitem/pcv_folderitem.h
     dataitem/pcv_pointclouditem.h
 
+    pcv.h
+    pcv_matrix.h
     pcv_configure.h)
 
 set(CORE_SOURCES 
@@ -15,6 +17,7 @@ set(CORE_SOURCES
     dataitem/pcv_folderitem.cpp
     dataitem/pcv_pointclouditem.cpp
 
+    pcv_matrix.cpp
     pcv_configure.cpp)
 
 

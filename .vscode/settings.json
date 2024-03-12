@@ -4,6 +4,7 @@
     "COMBOBOX",
     "DATAITEM",
     "FOLDERITEM",
+    "LINEEDIT",
     "MAINWINDOW",
     "MAINWINDOWBASE",
     "Matrixd",
@@ -13,10 +14,12 @@
     "XYZI"
   ],
   "files.associations": {
+    ".fantomasignore": "ignore",
     "object": "cpp",
     "stdvector": "cpp",
     "graphicscontext": "cpp",
     "operationthread": "cpp",
-    "stats": "cpp"
+    "stats": "cpp",
+    "qwidget": "cpp"
   }
 }

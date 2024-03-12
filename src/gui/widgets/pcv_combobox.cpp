@@ -1,21 +1,24 @@
 #include "pcv_combobox.h"
+#include "pcv_combobox_p.h"
 
 namespace pcv {
 
-class ComboBoxPrivate : public QObject
+/* ----------------------------- ComboBoxPrivate ---------------------------- */
+
+ComboBoxPrivate::ComboBoxPrivate() {}
+
+void ComboBoxPrivate::addItems(const QStringList &items) {}
+
+/* -------------------------------- ComboBox -------------------------------- */
+
+ComboBox::ComboBox(QWidget *parent) : ComboBox(QStringList(), parent) {}
+
+ComboBox::ComboBox(const QStringList &items, QWidget *parent)
+    : QWidget(*new ComboBoxPrivate, parent, Qt::WindowFlags())
 {
-    Q_OBJECT
-    Q_DECLARE_PUBLIC(ComboBox)
-
-public:
-    ComboBoxPrivate(ComboBox *q) : q_ptr(q) {}
-
-private:
-    ComboBox *const q_ptr;
-};
-
-
-ComboBox::ComboBox(QWidget *parent) : QWidget(parent), d_ptr(new ComboBoxPrivate(this)) {}
+    Q_D(ComboBox);
+    d->addItems(items);
+}
 
 ComboBox::~ComboBox() {}
 
