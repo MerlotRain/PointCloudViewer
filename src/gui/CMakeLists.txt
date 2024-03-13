@@ -1,11 +1,13 @@
 set(gui_sources 
     widgets/pcv_combobox.cpp
-    widgets/pcv_lineedit.cpp
+    widgets/pcv_tiplabel.cpp
+    widgets/pcv_toolbar.cpp
 )
 
 set(gui_headers
     widgets/pcv_combobox.h
-    widgets/pcv_lineedit.h
+    widgets/pcv_tiplabel.h
+    widgets/pcv_toolbar.h
 )
 
 set(gui_private

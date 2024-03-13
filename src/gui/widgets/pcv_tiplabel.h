@@ -1,23 +1,21 @@
-#ifndef __PCV_LINEEDIT_H__
-#define __PCV_LINEEDIT_H__
+#ifndef __PCV_TIPLABEL_H__
+#define __PCV_TIPLABEL_H__
 
-#include <QLineEdit>
+#include <QWidget>
 #include <delegate.h>
 
 #include "pcv_gui_global.h"
 
 namespace pcv {
 
-class GUI_EXPORT LineEdit : public QLineEdit
+class GUI_EXPORT TipLabel : public QWidget
 {
     Q_OBJECT
 public:
-    explicit LineEdit(QWidget *parent = nullptr);
-    ~LineEdit();
+    explicit TipLabel(QWidget *parent = nullptr);
+    ~TipLabel();
 
-    using QLineEdit::setText;
     void setText(const QString &);
-    QString dataText() const;
 
     Delegate<void(QString &)> onDataTransform;
 
@@ -26,11 +24,11 @@ protected:
     void leaveEvent(QEvent *e) override;
 
 private:
-    Q_DISABLE_COPY(LineEdit)
+    Q_DISABLE_COPY(TipLabel)
     QString mDataText;
     QString mText;
 };
 
 }// namespace pcv
 
-#endif//__PCV_LINEEDIT_H__
+#endif//__PCV_TIPLABEL_H__

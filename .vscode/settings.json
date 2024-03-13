@@ -11,6 +11,7 @@
     "POINTCLOUD",
     "POINTCLOUDITEM",
     "spdlog",
+    "TIPLABEL",
     "XYZI"
   ],
   "files.associations": {
