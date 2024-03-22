@@ -1,8 +1,10 @@
 #include "pcv_videodecode.h"
 #include <QDateTime>
 #include <QDebug>
+#include <QEventLoop>
 #include <QImage>
 #include <QMutex>
+#include <QTimer>
 
 extern "C" {
 #include <libavcodec/avcodec.h>
@@ -89,7 +91,7 @@ bool VideoDecode::open(const QString &url)
     m_codecContext = avcodec_alloc_context3(codec);
     if (!m_codecContext)
     {
-        qWarning() << "创建视频解码器上下文失败！";
+        qWarning() << "创建视频解码器上下文失败!";
         free();
         return false;
     }
@@ -246,6 +248,77 @@ void VideoDecode::free()
         delete[] m_buffer;
         m_buffer = nullptr;
     }
+}
+
+VideoThread::VideoThread(QObject *parent) : QThread(parent)
+{
+    m_videoDecode = new VideoDecode();
+
+    qRegisterMetaType<PlayState>("PlayState");
+}
+
+VideoThread::~VideoThread()
+{
+    if (m_videoDecode) { delete m_videoDecode; }
+}
+
+void VideoThread::open(const QString &url)
+{
+    if (!this->isRunning())
+    {
+        m_url = url;
+        emit this->start();
+    }
+}
+
+void VideoThread::pause(bool flag) { m_pause = flag; }
+
+void VideoThread::close()
+{
+    m_play = false;
+    m_pause = false;
+}
+
+const QString &VideoThread::url() { return m_url; }
+
+void sleepMsec(int msec)
+{
+    if (msec <= 0) return;
+    QEventLoop loop;
+    QTimer::singleShot(msec, &loop, SLOT(quit()));
+    loop.exec();
+}
+
+void VideoThread::run()
+{
+    bool ret = m_videoDecode->open(m_url);
+    if (ret)
+    {
+        m_play = true;
+        m_etime.start();
+        emit playState(Play);
+    }
+    else { qWarning() << "打开失败!"; }
+    while (m_play)
+    {
+        while (m_pause) { sleepMsec(200); }
+
+        QImage image = m_videoDecode->read();
+        if (!image.isNull())
+        {
+            sleepMsec(int(m_videoDecode->pts() - m_etime.elapsed()));
+            emit updateImage(image.copy());
+        }
+        else
+        {
+            if (m_videoDecode->isEnd()) { break; }
+            sleepMsec(1);
+        }
+    }
+
+    qDebug() << "播放结束!";
+    m_videoDecode->close();
+    emit playState(End);
 }
 
 }// namespace pcv

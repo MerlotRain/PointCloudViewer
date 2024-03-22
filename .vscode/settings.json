@@ -23,7 +23,8 @@
     "stats": "cpp",
     "qwidget": "cpp",
     "qicon": "cpp",
-    "qtoolbar": "cpp"
+    "qtoolbar": "cpp",
+    "qtime": "cpp"
   },
   "cmake.configureArgs": ["-DFFMPEG_DIR=/opt/homebrew/share/ffmpeg"]
 }

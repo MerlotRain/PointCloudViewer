@@ -1,8 +1,13 @@
 #ifndef __PCV_VIDEODECODE_H__
 #define __PCV_VIDEODECODE_H__
 
+#include <QElapsedTimer>
 #include <QSize>
 #include <QString>
+#include <QThread>
+
+#include "pcv_core_global.h"
+
 
 struct AVFormatContext;
 struct AVCodecContext;
@@ -15,7 +20,7 @@ class QImage;
 
 namespace pcv {
 
-class VideoDecode
+class CORE_EXPORT VideoDecode
 {
 public:
     VideoDecode();
@@ -51,6 +56,41 @@ private:
     bool m_end = false;
     uchar *m_buffer = nullptr;
 };
+
+class CORE_EXPORT VideoThread : public QThread
+{
+    Q_OBJECT
+public:
+    enum PlayState
+    {
+        Play,
+        End
+    };
+
+public:
+    explicit VideoThread(QObject *parent = nullptr);
+    ~VideoThread() override;
+
+    void open(const QString &url = QString());
+    void pause(bool flag);
+    void close();
+    const QString &url();
+
+protected:
+    void run() override;
+
+signals:
+    void updateImage(const QImage &image);
+    void playState(PlayState state);
+
+private:
+    VideoDecode *m_videoDecode = nullptr;
+    QString m_url;
+    bool m_play = false;
+    bool m_pause = false;
+    QElapsedTimer m_etime;
+};
+
 
 }// namespace pcv
 
