@@ -22,6 +22,7 @@
     "operationthread": "cpp",
     "stats": "cpp",
     "qwidget": "cpp",
-    "qicon": "cpp"
+    "qicon": "cpp",
+    "qtoolbar": "cpp"
   }
 }

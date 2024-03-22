@@ -2,9 +2,11 @@ set(gui_sources
     widgets/pcv_combobox.cpp
     widgets/pcv_tiplabel.cpp
     widgets/pcv_toolbar.cpp
+    widgets/pcv_collapsiblegroupbox.cpp
 )
 
 set(gui_headers
+    widgets/pcv_collapsiblegroupbox.h
     widgets/pcv_combobox.h
     widgets/pcv_tiplabel.h
     widgets/pcv_toolbar.h
