@@ -9,7 +9,8 @@ set(CORE_HEADERS
     pcv.h
     pcv_matrix.h
     pcv_configure.h
-    pcv_animatedicon.h)
+    pcv_animatedicon.h
+    pcv_videodecode.h)
 
 set(CORE_SOURCES 
     data/pcv_pointcloud.cpp
@@ -20,7 +21,8 @@ set(CORE_SOURCES
 
     pcv_matrix.cpp
     pcv_configure.cpp
-    pcv_animatedicon.cpp)
+    pcv_animatedicon.cpp
+    pcv_videodecode.cpp)
 
 
 add_library(pcv_core SHARED ${CORE_SOURCES} ${CORE_HEADERS})
@@ -42,4 +44,12 @@ target_link_libraries(pcv_core
     Qt${QT_VERSION_MAJOR}::Core
     Qt${QT_VERSION_MAJOR}::Gui
     Qt${QT_VERSION_MAJOR}::Xml
-    spdlog::spdlog)
+    spdlog::spdlog
+    avcodec
+    avfilter
+    avformat
+    swscale
+    avutil
+    swresample
+    avdevice
+    )
