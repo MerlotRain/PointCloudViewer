@@ -10,7 +10,11 @@ set(CORE_HEADERS
     pcv_matrix.h
     pcv_configure.h
     pcv_animatedicon.h
-    pcv_videodecode.h)
+    pcv_videodecode.h
+
+    progress/pcv_progresstaskmanager.h
+    progress/pcv_progressitem.h
+    progress/pcv_progresstask.h)
 
 set(CORE_SOURCES 
     data/pcv_pointcloud.cpp
@@ -22,7 +26,9 @@ set(CORE_SOURCES
     pcv_matrix.cpp
     pcv_configure.cpp
     pcv_animatedicon.cpp
-    pcv_videodecode.cpp)
+    pcv_videodecode.cpp
+    
+    progress/pcv_progresstaskmanager.cpp)
 
 
 add_library(pcv_core SHARED ${CORE_SOURCES} ${CORE_HEADERS})
@@ -44,6 +50,7 @@ target_link_libraries(pcv_core
     Qt${QT_VERSION_MAJOR}::Core
     Qt${QT_VERSION_MAJOR}::Gui
     Qt${QT_VERSION_MAJOR}::Xml
+    Qt${QT_VERSION_MAJOR}::Widgets
     spdlog::spdlog
     avcodec
     avfilter
